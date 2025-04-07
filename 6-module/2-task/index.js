@@ -9,20 +9,21 @@ export default class ProductCard {
   id       = '';
 
   constructor(product) {
-    this.name     = product.name;
-    this.price    = product.price;
-    this.category = product.category;
-    this.image    = product.image;
-    this.id       = product.id;
+    this.product  = product;
+    // this.name     = product.name;
+    // this.price    = product.price;
+    // this.category = product.category;
+    // this.image    = product.image;
+    // this.id       = product.id;
 
     this.elem = createElement(`
-      <div class="card">
+      <div class="card" id="${product.id}">
         <div class="card__top">
-            <img src="/assets/images/products/${this.image}" class="card__image" alt="product">
-            <span class="card__price">€${this.price.toFixed(2)}</span>
+            <img src="/assets/images/products/${product.image}" class="card__image" alt="product">
+            <span class="card__price">€${product.price.toFixed(2)}</span>
         </div>
         <div class="card__body">
-            <div class="card__title">${this.name}</div>
+            <div class="card__title">${product.name}</div>
             <button type="button" class="card__button">
                 <img src="/assets/images/icons/plus-icon.svg" alt="icon">
             </button>
@@ -37,7 +38,7 @@ export default class ProductCard {
   #onMenuClick = () => {
     
     const event = new CustomEvent("product-add", {
-      detail: this.id,
+      detail: this.product.id,
       bubbles: true
     });
 
